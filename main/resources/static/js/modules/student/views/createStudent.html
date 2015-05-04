@@ -1,0 +1,178 @@
+<div class="alert alert-info">Registration!!</div>
+<div ng-show="registrationSucess" class="alert alert-info">
+	<div class="alert alert-success">Registration successfull!</div>
+</div>
+<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+
+
+<form name="studentForm" ng-submit="submit(studentForm.$valid)"
+	novalidate>
+
+	<div class="form-group"		ng-class="getFormGroupClass(studentForm.firstName)">
+		<label class="control-label" for='firstName'>First Name:</label> 
+		<input type="text" class="form-control" id="firstName" name="firstName"	placeholder="Enter your First Name..." ng-model="student.firstName"
+			required> 
+		<span ng-show="studentForm.firstName.$dirty" ng-class="getGlyphIconClass(studentForm.firstName)"></span> 
+		<br />
+		<label class="control-label"ng-show="isRequired(studentForm.firstName)">*Required</label>
+	</div>
+
+	<div class="form-group"	ng-class="getFormGroupClass(studentForm.lastName)">
+		<label class="control-label" for='lastName'>Last Name:</label> 
+		<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter your Last Name..." ng-model="student.lastName" required> 
+		<span ng-show="studentForm.lastName.$dirty"ng-class="getGlyphIconClass(studentForm.lastName)"></span> 
+		<br /> 
+		<label class="control-label" ng-show="isRequired(studentForm.lastName)">*Required</label>
+	</div>
+
+	<div class="form-group" ng-class="getFormGroupClass(studentForm.name)">
+		<label class="control-label" for='name'>User Name:</label> 
+		<input type="text" class="form-control" id="name" name="name"placeholder="Enter your User Name..." ng-model="student.name" required>
+		<span  ng-show="studentForm.name.$dirty"	ng-class="getGlyphIconClass(studentForm.name)"></span> <br /> 
+		<label class="control-label" ng-show="isRequired(studentForm.name)">*Required</label>
+	</div>
+	<p>
+	
+	<div class="form-group" ng-class="getFormGroupClass(studentForm.passwordText)">
+    	<label class="control-label" for='passwordText'>Password:(Auto generated you can change it here)</label> 
+		<input class="form-control" type="text" name="passwordText"	placeholder="Enter your password..." 	
+		 value="{{student.firstName+'.'+student.lastName+'.123'}}"	 required ng-model="student.password"></input>
+		<label class="control-label" ng-show="isRequired(studentForm.passwordText)">*Required</label> 
+		<label class="control-label" ng-show="studentForm.passwordText.$error.pattern">*Required 8-12 characters with a-z and 0-9</label>
+	</div>
+
+
+	<p>
+	<div class="form-group"	ng-class="getFormGroupClass(studentForm.classno)">
+        <label class="control-label" for='classno'> Class No:</label>
+		<input type="number" name="classno" min="0" max="12" 	required ng-model="student.classno"/> 
+		<span class="error"	ng-show="studentForm.input.$error.required"> Required!</span>
+		<span class="error" ng-show="studentForm.input.$error.number"> Not	valid number!</span>
+		<span class="error" ng-show="studentForm.input.$error.max"> exceeded value</span>
+
+		<span /><span /><span /><span />
+		<label class="control-label" for='section'> Section:</label>
+		<input type="text" class="form-control" id="section" name="section" ng-model="student.section" required>
+<!-- 		<select class="form-control" ng-model="student.section" ng-options="f for f in formats" name="section" ><option></option></select> -->
+	</div>
+	
+	<label class="control-label" > Adrress:</label>
+	
+	<div class="form-group"	ng-class="getFormGroupClass(studentForm.streetName1)">
+        <label class="control-label" for='streetName1'>streetName 1</label> 
+		<input type="text" class="form-control" id="streetName1" name="streetName1" ng-model="address.streetName1" required>
+		<span  ng-show="studentForm.streetName1.$dirty"	ng-class="getGlyphIconClass(studentForm.streetName1)"></span> <br /> 
+		<label class="control-label" ng-show="isRequired(studentForm.streetName1)">*Required</label>
+	</div>
+	<div class="form-group"	ng-class="getFormGroupClass(studentForm.streetName2)">
+        <label class="control-label" for='streetName2'>streetName 2</label> 
+		<input type="text" class="form-control" id="streetName2" name="streetName2" ng-model="address.streetName2" required>
+		<span  ng-show="studentForm.streetName2.$dirty"	ng-class="getGlyphIconClass(studentForm.streetName2)"></span> <br /> 
+		<label class="control-label" ng-show="isRequired(studentForm.streetName2)">*Required</label>
+	</div>
+	
+	<div class="form-group"	ng-class="getFormGroupClass(studentForm.apptNo)">
+        <label class="control-label" for='apptNo'>AptNo</label> 
+		<input type="text" class="form-control" id="apptNo" name="apptNo" ng-model="address.apptNo" required>
+		<span  ng-show="studentForm.apptNo.$dirty"	ng-class="getGlyphIconClass(studentForm.apptNo)"></span> <br /> 
+		<label class="control-label" ng-show="isRequired(studentForm.apptNo)">*Required</label>
+	</div>
+
+	<div class="form-group"	ng-class="getFormGroupClass(studentForm.country)">
+        <label class="control-label" for='country'>country</label> 
+		<input type="text" class="form-control" id="country" name="country" ng-model="address.country" required>
+		<span  ng-show="studentForm.country.$dirty"	ng-class="getGlyphIconClass(studentForm.country)"></span> <br /> 
+		<label class="control-label" ng-show="isRequired(studentForm.country)">*Required</label>
+	</div>
+	
+	<div class="form-group"	ng-class="getFormGroupClass(studentForm.state)">
+        <label class="control-label" for='state'>state</label> 
+		<input type="text" class="form-control" id="state" name="state" ng-model="address.state" required>
+		<span  ng-show="studentForm.state.$dirty"	ng-class="getGlyphIconClass(studentForm.state)"></span> <br /> 
+		<label class="control-label" ng-show="isRequired(studentForm.state)">*Required</label>
+	</div>
+	
+	<div class="form-group"	ng-class="getFormGroupClass(studentForm.city)">
+        <label class="control-label" for='city'>city</label> 
+		<input type="text" class="form-control" id="city" name="city" ng-model="address.city" required>
+		<span  ng-show="studentForm.city.$dirty"	ng-class="getGlyphIconClass(studentForm.city)"></span> <br /> 
+		<label class="control-label" ng-show="isRequired(studentForm.city)">*Required</label>
+	</div>
+	
+	<div class="form-group"	ng-class="getFormGroupClass(studentForm.zipcode)">
+        <label class="control-label" for='zipCode'>Zip Code</label> 
+		<input type="number" class="form-control" id="zipCode" name="zipCode" ng-model="address.zipCode" required>
+		<span  ng-show="studentForm.zipCode.$dirty"	ng-class="getGlyphIconClass(studentForm.zipCode)"></span> <br /> 
+		<label class="control-label" ng-show="isRequired(studentForm.zipCode)">*Required</label>
+	</div>
+	
+	<div ng-class="getFormGroupClass(studentForm.emailText)">
+		<label class="control-label" for='emailText'>Email:</label> 
+		<input	type="email" class="form-control" id="emailText" name="emailText"placeholder="Enter your email..." ng-model="student.email" required />
+		<span ng-show="studentForm.emailText.$dirty" ng-class="getGlyphIconClass(studentForm.emailText)"></span> <br />
+		<label class="control-label left" ng-show="isRequired(studentForm.emailText)">*Required</label>
+		<label 	class="control-label left"	ng-show="studentForm.emailText.$error.email">*Invalid email</label>
+	</div>
+	
+	<label class="control-label" > Guardian info:</label>
+	
+	<div class="form-group"		ng-class="getFormGroupClass(studentForm.gaurdianfirstName)">
+		<label class="control-label" for='gaurdianfirstName'>First Name:</label> 
+		<input type="text" class="form-control" id="gaurdianfirstName" name="gaurdianfirstName"	placeholder="Enter your First Name..." ng-model="student.gaurdian1.firstName"
+			required> 
+		<span ng-show="studentForm.gaurdianfirstName.$dirty" ng-class="getGlyphIconClass(studentForm.gaurdianfirstName)"></span> 
+		<br />
+		<label class="control-label"ng-show="isRequired(studentForm.gaurdianfirstName)">*Required</label>
+	</div>
+
+	<div class="form-group"	ng-class="getFormGroupClass(studentForm.gaudianlastName)">
+		<label class="control-label" for='gaudianlastName'>Last Name:</label> 
+		<input type="text" class="form-control" id="gaudianlastName" name="gaudianlastName" placeholder="Enter your Last Name..." ng-model="student.gaurdian1.lastName" required> 
+		<span ng-show="studentForm.gaudianlastName.$dirty"ng-class="getGlyphIconClass(studentForm.gaudianlastName)"></span> 
+		<br /> 
+		<label class="control-label" ng-show="isRequired(studentForm.gaudianlastName)">*Required</label>
+	</div>
+
+	<div class="form-group" ng-class="getFormGroupClass(studentForm.gaurdianName)">
+		<label class="control-label" for='gaurdianName'>User Name:</label> 
+		<input type="text" class="form-control" id="gaurdianName" name="gaurdianName"placeholder="Enter your User Name..." ng-model="student.gaurdian1.name" required>
+		<span  ng-show="studentForm.gaurdianName.$dirty"	ng-class="getGlyphIconClass(studentForm.gaurdianName)"></span> <br /> 
+		<label class="control-label" ng-show="isRequired(studentForm.gaurdianName)">*Required</label>
+	</div>
+	<p>
+	
+	<div class="form-group" ng-class="getFormGroupClass(studentForm.gaurdianpasswordText)">
+    	<label class="control-label" for='gaurdianpasswordText'>Password:(Auto generated you can change it here)</label> 
+		<input class="form-control" type="text" name="gaurdianpasswordText"	placeholder="Enter your password..." 	
+		 value="{{student.gaurdian1.firstName+'.'+student.gaurdian1.lastName+'.123'}}"	 required ng-model="student.gaurdian1.password"></input>
+		<label class="control-label" ng-show="isRequired(studentForm.gaurdianpasswordText)">*Required</label> 
+		<label class="control-label" ng-show="studentForm.gaurdianpasswordText.$error.pattern">*Required 8-12 characters with a-z and 0-9</label>
+	</div>
+	
+	<div ng-class="getFormGroupClass(studentForm.gaurdianemailText)">
+		<label class="control-label" for='gaurdianemailText'>Email:</label> 
+		<input	type="email" class="form-control" id="gaurdianemailText" name="gaurdianemailText"placeholder="Enter your email..." ng-model="student.gaurdian1.email" required />
+		<span ng-show="studentForm.gaurdianemailText.$dirty" ng-class="getGlyphIconClass(studentForm.gaurdianemailText)"></span> <br />
+		<label class="control-label left" ng-show="isRequired(studentForm.gaurdianemailText)">*Required</label>
+		<label 	class="control-label left"	ng-show="studentForm.gaurdianemailText.$error.email">*Invalid email</label>
+	</div>
+	
+	<div ng-class="getFormGroupClass(studentForm.gaudianprimaryPhone)">
+		<label class="control-label" for='gaudianprimaryPhone'>Primary Phone:</label> 
+		<input	type="Number" class="form-control" id="gaudianprimaryPhone" name="gaudianprimaryPhone"placeholder="Enter your primaryPhone" ng-model="student.gaurdian1.primaryPhoneNumber" required />
+		<span ng-show="studentForm.gaudianprimaryPhone.$dirty" ng-class="getGlyphIconClass(studentForm.gaudianprimaryPhone)"></span> <br />
+		<label class="control-label left" ng-show="isRequired(studentForm.gaudianprimaryPhone)">*Required</label>
+		<label 	class="control-label left"	ng-show="studentForm.gaudianprimaryPhone.$error.email">*Invalid email</label>
+	</div>
+	
+	<div ng-class="getFormGroupClass(studentForm.gaurdiansecondaryPhone)">
+		<label class="control-label" for='gaurdiansecondaryPhone'>Secondary Phone:</label> 
+		<input	type="Number" class="form-control" id="gaurdiansecondaryPhone" name="gaurdiansecondaryPhone"placeholder="Enter your secondaryPhone" ng-model="student.gaurdian1.secondaryPhoneNumber" required />
+		<span ng-show="studentForm.gaurdiansecondaryPhone.$dirty" ng-class="getGlyphIconClass(studentForm.gaurdiansecondaryPhone)"></span> <br />
+		<label class="control-label left" ng-show="isRequired(studentForm.gaurdiansecondaryPhone)">*Required</label>
+		<label 	class="control-label left"	ng-show="studentForm.gaurdiansecondaryPhone.$error.email">*Invalid email</label>
+	</div>
+	
+	<button type="submit" class="btn btn-info"	ng-disabled="studentForm.$invalid">Submit</button>
+</form>
+

@@ -1,0 +1,24 @@
+<div class="span6" ng-controller ="ExceptionTableController">
+    <table class="table table-striped table-condensed" height=100>
+          	 <table class="table table-striped table-condensed">
+        <thead>
+        <tr>
+            <th style="min-width: 80px;">Tables in exception list</th>
+           
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="table in exceptionTablelist">
+            <td>{{ table.gzrexmtTableName }}</td>
+            
+        </tr>
+        </tbody>
+    </table>
+      <div >
+        <live-search id="search1" type="text"
+          live-search-callback="mySearchCallback"
+          ng-model="mySearch" class="form-control"></live-search>
+      </div>
+      
+      <td><a ng-click="addToExceptionList()" class="btn btn-small btn-primary">Add To Exception List</a></td>
+ </div>

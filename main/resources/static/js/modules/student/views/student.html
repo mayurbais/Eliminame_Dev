@@ -1,0 +1,17 @@
+<!--  create student -->
+<!--  list of student student -->
+
+  <div  class="container"  ng-show="authenticated" >
+		<ul class="nav nav-pills" role="tablist">
+			<li ng-class="{active:tab('createStudent')}"><a href="#/createStudent">addStudent</a></li>
+			<li><a href="#/studentList">All Student</a></li>
+		</ul>
+	</div>
+	
+    <div class="jumbotron">
+      <div class="container">
+        <div class="col-xs-offset-2 col-xs-8">
+          <div ng-view></div>
+        </div>
+      </div>
+    </div>

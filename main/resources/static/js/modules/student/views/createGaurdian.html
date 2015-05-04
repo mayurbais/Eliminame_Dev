@@ -1,0 +1,70 @@
+<div class="alert alert-info">Registration!!</div>
+<div ng-show="registrationSucess" class="alert alert-info">
+	<div class="alert alert-success">Registration successfull!</div>
+</div>
+<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+
+
+<form name="gaurdianForm" ng-submit="submit(gaurdianForm.$valid)"
+	novalidate>
+
+	<div class="form-group"		ng-class="getFormGroupClass(gaurdianForm.firstName)">
+		<label class="control-label" for='firstName'>First Name:</label> 
+		<input type="text" class="form-control" id="firstName" name="firstName"	placeholder="Enter your First Name..." ng-model="gaurdian.firstName"
+			required> 
+		<span ng-show="gaurdianForm.firstName.$dirty" ng-class="getGlyphIconClass(gaurdianForm.firstName)"></span> 
+		<br />
+		<label class="control-label"ng-show="isRequired(gaurdianForm.firstName)">*Required</label>
+	</div>
+
+	<div class="form-group"	ng-class="getFormGroupClass(gaurdianForm.lastName)">
+		<label class="control-label" for='lastName'>Last Name:</label> 
+		<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter your Last Name..." ng-model="gaurdian.lastName" required> 
+		<span ng-show="gaurdianForm.lastName.$dirty"ng-class="getGlyphIconClass(gaurdianForm.lastName)"></span> 
+		<br /> 
+		<label class="control-label" ng-show="isRequired(gaurdianForm.lastName)">*Required</label>
+	</div>
+
+	<div class="form-group" ng-class="getFormGroupClass(gaurdianForm.name)">
+		<label class="control-label" for='name'>User Name:</label> 
+		<input type="text" class="form-control" id="name" name="name"placeholder="Enter your User Name..." ng-model="gaurdian.name" required>
+		<span  ng-show="gaurdianForm.name.$dirty"	ng-class="getGlyphIconClass(gaurdianForm.name)"></span> <br /> 
+		<label class="control-label" ng-show="isRequired(gaurdianForm.name)">*Required</label>
+	</div>
+	<p>
+	
+	<div class="form-group" ng-class="getFormGroupClass(gaurdianForm.passwordText)">
+    	<label class="control-label" for='passwordText'>Password:(Auto generated you can change it here)</label> 
+		<input class="form-control" type="text" name="passwordText"	placeholder="Enter your password..." 	
+		 value="{{gaurdian.firstName+'.'+gaurdian.lastName+'.123'}}"	 required ng-model="gaurdian.password"></input>
+		<label class="control-label" ng-show="isRequired(gaurdianForm.passwordText)">*Required</label> 
+		<label class="control-label" ng-show="gaurdianForm.passwordText.$error.pattern">*Required 8-12 characters with a-z and 0-9</label>
+	</div>
+	
+	<div ng-class="getFormGroupClass(gaurdianForm.emailText)">
+		<label class="control-label" for='emailText'>Email:</label> 
+		<input	type="email" class="form-control" id="emailText" name="emailText"placeholder="Enter your email..." ng-model="gaurdian.email" required />
+		<span ng-show="gaurdianForm.emailText.$dirty" ng-class="getGlyphIconClass(gaurdianForm.emailText)"></span> <br />
+		<label class="control-label left" ng-show="isRequired(gaurdianForm.emailText)">*Required</label>
+		<label 	class="control-label left"	ng-show="gaurdianForm.emailText.$error.email">*Invalid email</label>
+	</div>
+	
+	<div ng-class="getFormGroupClass(gaurdianForm.primaryPhone)">
+		<label class="control-label" for='primaryPhone'>Primary Phone:</label> 
+		<input	type="email" class="form-control" id="primaryPhone" name="primaryPhone"placeholder="Enter your primaryPhone" ng-model="gaurdian.primaryPhoneNumberl" required />
+		<span ng-show="gaurdianForm.primaryPhone.$dirty" ng-class="getGlyphIconClass(gaurdianForm.primaryPhone)"></span> <br />
+		<label class="control-label left" ng-show="isRequired(gaurdianForm.primaryPhone)">*Required</label>
+		<label 	class="control-label left"	ng-show="gaurdianForm.primaryPhone.$error.email">*Invalid email</label>
+	</div>
+	
+	<div ng-class="getFormGroupClass(gaurdianForm.secondaryPhone)">
+		<label class="control-label" for='secondaryPhone'>Email:</label> 
+		<input	type="email" class="form-control" id="secondaryPhone" name="secondaryPhone"placeholder="Enter your secondaryPhone" ng-model="gaurdian.secondaryPhoneNumber" required />
+		<span ng-show="gaurdianForm.secondaryPhone.$dirty" ng-class="getGlyphIconClass(gaurdianForm.secondaryPhone)"></span> <br />
+		<label class="control-label left" ng-show="isRequired(gaurdianForm.secondaryPhone)">*Required</label>
+		<label 	class="control-label left"	ng-show="gaurdianForm.secondaryPhone.$error.email">*Invalid email</label>
+	</div>
+	
+	<button type="submit" class="btn btn-info"	ng-disabled="gaurdianForm.$invalid">Submit</button>
+</form>
+

@@ -1,0 +1,201 @@
+<div  ng-show="authenticated">
+<a href="" ng-click="logout()">Logout!</a>
+welcome {{user.name}}
+</p>
+</div>
+
+<!-- </p> -->
+			 <div  ng-show="addmergeWindow">
+				<div ng-include src="'js/modules/merge/view/merge.html'" ></div>
+			</div>
+			<section class="content" style="padding: 0px ! important;" ng-show="!addmergeWindow">
+	          <!-- Info boxes -->
+			<div class="box">
+				<div class="box-header with-border" >
+				  <h3 class="box-title">Add scan criteria</h3>
+				  	<div class="row" style="margin-top: 10px;">
+						<div class="col-xs-5" style="width: auto;" >
+							<div class="dataTables_length" id="example1_length">
+							<label> Matching Source : 
+								<select aria-controls="example1" name="example1_length" id="macthingSrcSelector" class ="form-control" style="width: auto; float: right;" ng-model="matchingSrc">
+									<option ng-repeat="matchingSrc in matchingSourceLovs" value="{{matchingSrc.value}}">{{matchingSrc.name}}</option>
+								</select>
+							</label>
+							</div>
+						</div>
+						<div class="col-xs-5" style="width: auto;" >
+							<div class="dataTables_length" id="example2_length">
+							<label> Range : 
+								<select aria-controls="example1" name="example2_length"  id="rangeSelector" class ="form-control" style="width: auto; float: right;" ng-model="range">
+									<option ng-repeat="range in rangeLov" value="{{range.value}}" >{{range.name}}</option>
+								</select>
+							</label>
+							</div>
+						</div>
+						<div class="col-xs-1">
+							<button data-original-title="Scan"  style="box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.35);" data-toggle="tooltip" class="btn btn-flat btn-info" ng-click="scanRecords()" ><i class="fa fa-search"></i></button>
+						</div>
+					</div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+					<div class="row">
+					<div class="col-md-8">
+						<div class="gridStyle" ng-grid="gridOptions" style="min-height: 500px; width:100%;  border: 1px solid rgb(212,212,212);"></div>
+					</div>
+					<div class="col-md-4">
+						<div style="box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.1);" class="box box-solid">
+							<div style="border-bottom-color: rgb(67, 163, 201);" class="box-header with-border">
+							  <i class="fa fa-text-width"></i>
+							  <h3 class="box-title"><b>Details of : </b> {{selectedRecord.gzrelim_first_name}}({{selectedRecord.gzrelim_pidm}})</h3>
+							</div><!-- /.box-header -->
+							<div class="box-body">
+							  <blockquote style="border-left-color: rgb(67, 163, 201);">
+								<dl class="dl-horizontal" style="border-left-color: rgb(67, 163, 201);">
+									<dt style ="width: 70px">Name</dt>
+										<dd style ="margin-left: 100px">{{selectedRecord.gzrelim_first_name}}.{{selectedRecord.gzrelim_last_name}}.</dd>
+									<dt style ="width: 70px">Email</dt>
+										<dd style ="margin-left: 100px">{{selectedRecord.gzrelim_email_address}}</dd>
+									<dt style ="width: 70px">SSN</dt>
+										<dd style ="margin-left: 100px">{{selectedRecord.gzrelim_ssn}}</dd>
+									<dt style ="width: 100px">Birth date</dt>
+										<dd style ="margin-left: 100px">{{selectedRecord.gzrelim_birth_month}}/{{selectedRecord.gzrelim_birth_day}}/{{selectedRecord.gzrelim_birth_year}}</dd>
+									<dt style ="width: 70px">Address</dt>
+										<dd style ="margin-left: 100px">{{selectedRecord.gzrelim_house_number}},{{selectedRecord.gzrelim_street_line1}},{{selectedRecord.gzrelim_street_line2}},{{selectedRecord.gzrelim_street_line3}},</dd> 
+										<dd style ="margin-left: 100px">{{selectedRecord.gzrelim_city}},{{selectedRecord.gzrelim_stat_code}},</dd>
+										<dd style ="margin-left: 100px">{{selectedRecord.gzrelim_zip}},{{selectedRecord.gzrelim_cnty_code}}</dd>  
+									<dt style ="width: 70px">Phone</dt>
+										<dd>{{selectedRecord.gzrelim_phone_number}} </dd> 
+									
+							   </dl>
+							  </blockquote>
+							</div><!-- /.box-body -->
+						</div>
+						
+						<div style="box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.1);" class="box box-solid">
+							<div style="border-bottom-color: rgb(67, 163, 201);" class="box-header with-border">
+							  <i class="fa fa-text-width"></i>
+							  <h3 class="box-title"><b>Activated in following module</b></h3>
+							</div><!-- /.box-header -->
+							<div class="box-body" style="font-weight: 500;">
+								<div class="row">
+												
+									<div class="col-xs-5" style="width: auto;" >
+										 <h5 class="box-title"><b>Student</b></h3>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.stdRecr)}}" aria-checked="{{activateModules.stdRecr}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Recruting
+										</label>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.stdAdm)}}" aria-checked="{{activateModules.stdAdm}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Admissions
+										</label>
+										
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.stdTran)}}" aria-checked="{{activateModules.stdTran}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Transfer work
+										</label>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.stdGenr)}}"  aria-checked="{{activateModules.stdGenr}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											General Student
+										</label>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.stdRegr)}}" aria-checked="{{activateModules.stdRegr}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Registration
+										</label>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.stdHous)}}" aria-checked="{{activateModules.stdHous}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Housing
+										</label>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.stdFacu)}}" aria-checked="{{activateModules.stdFacu}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Faculty
+										</label>
+									</div>
+									<div class="col-xs-5" style="width: auto;" >
+										<h5 class="box-title"><b>Human Resource</b></h3>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.hrAppl)}}" aria-checked="{{activateModules.hrAppl}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Applicant
+										</label>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.hrCobra)}}" aria-checked="{{activateModules.hrCobra}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Cobra Person
+										</label>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.hrEmpl)}}" aria-checked="{{activateModules.hrEmpl}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Employee
+										</label>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.hrBene)}}" aria-checked="{{activateModules.hrBene}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Beneficiary
+										</label>
+									</div>
+								
+									<div class="col-xs-5" style="width: auto;" >
+										<h5 class="box-title"><b>Finance</b></h3>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.finAgency)}}" aria-checked="{{activateModules.finAgency}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Agency
+										</label>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.finBank)}}" aria-checked="{{activateModules.finBank}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Bank
+										</label>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.finCust)}}" aria-checked="{{activateModules.finCust}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Customer
+										</label>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.finEmpl)}}" aria-checked="{{activateModules.finEmpl}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Employee
+										</label>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.finMagr)}}" aria-checked="{{activateModules.finMagr}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Financial Manager
+										</label>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.finVend)}}" aria-checked="{{activateModules.finVend}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Vendor
+										</label>
+									</div>
+									<div class="col-xs-5" style="width: auto;" >
+										<h5 class="box-title"><b>Advancement</b></h3>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.aluConst)}}" aria-checked="{{activateModules.aluConst}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Individual
+										</label>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.aluOrgn)}}"  aria-checked="{{activateModules.aluOrgn}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Orgnization
+										</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-5" style="width: auto;" >
+										<h5 class="box-title"><b>Financial Aid</b></h3>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.finAidAppl)}}" aria-checked="{{activateModules.finAidAppl}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Applicant
+										</label>
+									</div>
+									<div class="col-xs-5" style="width: auto;" >
+										<h5 class="box-title"><b>Account Recievable</b></h3>
+										<label class="">
+											<div class="icheckbox_minimal-blue {{getClass(activateModules.ar)}}"  aria-checked="{{activateModules.ar}}" aria-disabled="true" style="position: relative;"><input type="checkbox" class="minimal-blue" checked="{{activateModules.stdRecr}}" style="position: absolute; opacity: 0;" disabled=""><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+											Accounts Recievable
+										</label>
+									</div>	
+									
+								</div>
+
+								
+							</div><!-- /.box-body -->
+						</div>
+						
+					</div>
+					</div>
+                </div><!-- /.box-body -->
+              </div>
+	
+	       
+	        </section><!-- /.content -->

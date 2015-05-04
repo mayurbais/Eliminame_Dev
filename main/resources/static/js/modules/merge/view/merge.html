@@ -1,0 +1,85 @@
+<section class="content" style="padding: 0px ! important;"  ng-controller="MergeController">
+	<!-- Info boxes -->
+	<div class="box" >
+        <div with-border">
+          	<div class="box-body">
+				<div class="row" style="margin-top: 10px; border-bottom: 1px solid #f4f4f4;">
+					<div class="col-xs-5" style="width: auto;" >
+						<div class="dataTables_length" id="example1_length">
+							<label> Interactive Merge for  Table :  &nbsp;
+								<select aria-controls="example1" name="example1_length" id="pidmTableSelector" class ="form-control" 
+										style="width: auto; float: right;" 	ng-model="SelectedpidmTablename" ng-change="getRecords()">>
+									<option ng-repeat="pidmTable in pidmTables" value="{{pidmTable.gzrimrg_table_name}}">{{pidmTable.gzrimrg_table_name}}</option>
+								</select>
+							</label>
+						</div>
+					</div>
+				</div>
+				
+			
+					
+				<div class="row" style="margin-top: 10px; padding-bottom: 10px;">
+					<div class="col-xs-5" style="width:47%">
+						<ul class="todo-list" style="overflow: hidden;">
+
+							<li style="height:55px">
+							  <!-- drag handle -->
+							  <span class="handle" style=" vertical-align: middle;">
+								<i class="fa fa-ellipsis-v"></i>
+								<i class="fa fa-ellipsis-v"></i>
+							  </span>
+							  <!-- checkbox -->
+							  
+							  <!-- todo text -->
+							  <span class="text" style="vertical-align: middle;">PIDM {{$parent.selectedPIDM1}} in record : &nbsp; </span>
+								<select aria-controls="example1" name="example1_length" id="pidm1RecordSelector" class ="form-control" style="width: auto; float: right;" ng-model="record1"
+									ng-change="getColumnValuesForRec1()">
+									<option ng-repeat="record1 in record1List" value="{{record1.value}}">{{record1.name}}</option>
+								</select>
+							</li>
+							
+							<li style="height:500px">
+								<div class="gridStyle" ng-grid="gridOptionsPidm1" style="min-height: 450px; width:100%;  border: 1px solid rgb(212,212,212);"></div>
+							</li>
+							
+						<ul>	
+					</div>
+					<div class="col-xs-1"  style="width: 25px !important;">
+						<div class="row"><button data-original-title="merge left"  style="box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.35);"  class="btn btn-flat btn-info" ng-click="allToRight()" ><i class="fa fa-toggle-left"></i></button></div>
+						<div class="row"><button data-original-title="merge left"  style="box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.35);"  class="btn btn-flat btn-info" ng-click="mergeRightToLeft()" ><i class="fa fa-arrow-circle-left"></i></button></div>
+						<div class="row"><button data-original-title="merge left"  style="box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.35);"  class="btn btn-flat btn-info" ng-click="mergeLeftToright()" ><i class="fa fa-arrow-circle-right"></i></button></div>
+						<div class="row"><button data-original-title="merge left"  style="box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.35);"  class="btn btn-flat btn-info" ng-click="allToLeft()" ><i class="fa fa-toggle-right"></i></button></div>
+					</div>
+					<div class="col-xs-5" style="width:47%">
+						<ul class="todo-list" style="overflow: hidden;">
+							<li style="height:55px">
+							  <!-- drag handle -->
+							  <span class="handle" style=" vertical-align: middle;">
+								<i class="fa fa-ellipsis-v"></i>
+								<i class="fa fa-ellipsis-v"></i>
+							  </span>
+							  <!-- checkbox -->
+							  
+							  <!-- todo text -->
+							  <span class="text" style="vertical-align: middle;">PIDM {{$parent.selectedPIDM1}} in record : &nbsp; </span>
+								<select aria-controls="example1" name="example1_length" id="pidm2RecordSelector" class ="form-control" style="width: auto; float: right;" ng-model="record2"
+									ng-change="getColumnValuesForRec2()">
+									<option ng-repeat="record2 in record2List" value="{{record2.value}}">{{record2.name}}</option>
+								</select>
+							</li>
+							<li style="height:500px">
+								<div class="gridStyle" ng-grid="gridOptionsPidm2" style="min-height: 450px; width:100%;  border: 1px solid rgb(212,212,212);"></div>
+							</li>
+							
+						<ul>	
+					</div>
+				</div>
+				<div class="box-footer" style="height: 50px;padding-right: 39px;  padding-top: 10px;">
+					<button type="submit" class="btn btn-primary pull-right" ng-click="cancel()">Cancel</button>
+					<button type="submit" class="btn btn-primary pull-right" ng-click="mergeRecord()">Save</button>
+                 
+                </div>
+				</div>
+		</div>
+	</div>
+</section>	

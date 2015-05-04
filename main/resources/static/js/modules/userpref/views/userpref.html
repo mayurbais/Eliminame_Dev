@@ -1,0 +1,43 @@
+ <section class="content" style="padding: 0px ! important;">
+	<!-- Info boxes -->
+	<div class="box">
+        <div with-border">
+          	<div class="box-body">
+			
+				<div class="row" style="margin-top: 10px; margin-left:10px; border-bottom: 1px solid #f4f4f4;">
+					    <!-- Nav tabs -->
+
+					<ul class="nav nav-tabs" role="tablist">
+						<li ng-repeat="tab in tabs" ng-class="{active: current == tab.name}">
+							<a role="tab" data-toggle="tab" ng-bind="tab.title" ng-click="toggleTab(tab)">
+								{{tab.title}}
+							</a>
+							
+						</li>
+								 
+					</ul>
+					
+					<div  id="exceptionTable" ng-show="current == 'exceptionTable'">
+						  <div ng-include="tabSrc"/>
+					</div>
+					<div  id="selectedColumns" ng-show="current == 'selectedColumns'">
+						  <h2>Profile Content Goes Here</h2>
+						  <img src="http://lorempixel.com/400/400/cats/2" alt="Cats"/>
+						  <div ng-include="tabSrc"/>	
+					</div>
+					<div  id="range" ng-show="current == 'range'">
+						  <h2>Messages Content Goes Here</h2>
+						  <img src="http://lorempixel.com/400/400/cats/3" alt="Cats"/>
+						  <div ng-include="tabSrc"/>
+					</div>
+					  
+    
+				</div>
+			</div>
+		</div>
+	</div>
+</section>	
+ 	
+
+ 
+      

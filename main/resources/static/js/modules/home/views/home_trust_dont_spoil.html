@@ -1,0 +1,71 @@
+<div  ng-show="authenticated">
+<a href="" ng-click="logout()">Logout!</a>
+welcome {{user.name}}
+</p>
+<select id="macthingSrcSelector" style="width: auto;" ng-model="matchingSrc">
+      <option ng-repeat="matchingSrc in matchingSourceLovs" value="{{matchingSrc.value}}">{{matchingSrc.name}}</option>
+    </select>
+
+<select id="rangeSelector" style="width: auto;" ng-model="range">
+      <option ng-repeat="range in rangeLov" value="{{range.value}}" >{{range.name}}</option>
+</select>
+
+<button id="scanBtn" ng-click="scanRecords()"> Scan</button>
+</div>
+
+
+<div class="span6">
+    <table class="table table-striped table-condensed">
+        <thead>
+        <tr>
+        	<th style="min-width: 80px;">match group</th>
+            <th style="min-width: 80px;">PIDM</th>
+            <th style="min-width: 80px;">Last name</th>
+            <th style="min-width: 80px;">First name</th>
+            <th style="min-width: 80px;">Middle name</th>
+            <th style="min-width: 80px;">Street line 1</th>
+            <th style="min-width: 80px;">Steer line 2</th>
+            <th style="min-width: 80px;">City</th>
+            <th style="min-width: 80px;">State Code</th>
+            <th style="min-width: 80px;">ZIP</th>
+            <th style="min-width: 80px;">Nation Code</th>
+            <th style="min-width: 80px;">Aread code</th>
+            <th style="min-width: 80px;">Phone number</th>
+            <th style="width:20px;">&nbsp;</th>
+            <th style="width:20px;">&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="relim in relimData">
+        	<td >{{ relim.gzrelim_match_group}}</td>
+            <td>{{ relim.gzrelim_pidm }}</td>
+            <td>{{ relim.gzrelim_last_name }}</td>
+            <td>{{ relim.gzrelim_first_name }}</td>
+            <td>{{ relim.gzrelim_mi }}</td>
+            <td>{{ relim.gzrelim_street_line1 }}</td>
+            <td>{{ relim.gzrelim_street_line2 }}</td>
+            <td>{{ relim.gzrelim_city }}</td>
+            <td>{{ relim.gzrelim_stat_code }}</td>
+            <td>{{ relim.gzrelim_zip }}</td>
+            <td>{{ relim.gzrelim_natn_code }}</td>
+            <td>{{ relim.gzrelim_phone_area }}</td>
+            <td>{{ relim.gzrelim_phone_number }}</td>
+            <td><input type="checkbox"  id="{{relim.gzrelim_pidm}}_checked"/></td>
+            <td><a ng-click="deactivateRec(relim)" class="btn btn-small btn-primary">deactivate</a></td>
+            <td><a ng-click="deleteRec(relim)" class="btn btn-small btn-danger">delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <a ng-click="merge()" class="btn btn-small btn-primary">Merge</a>
+</div>
+
+
+<div  ng-show="!authenticated">
+	<p><a href="#/login">Login</a></a> to see your greeting </p>
+</div>
+
+
+<!-- </p> -->
+<!-- <div  ng-show="authenticated && isUserAdmin()"> -->
+<!-- 	<p><a href="#/student">Student</a></a> </p> -->
+<!-- </div> -->

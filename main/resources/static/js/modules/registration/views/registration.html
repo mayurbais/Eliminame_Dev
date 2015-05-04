@@ -1,0 +1,74 @@
+<div class="alert alert-info">
+   Registration!! 
+</div>
+<div ng-show="registrationSucess" class="alert alert-info">
+   <div class="alert alert-success">Registration successfull!</div>
+</div>
+<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+
+
+<form name="registerForm"  ng-submit="submit(registerForm.$valid)" novalidate>
+	
+	<div class="form-group"  ng-class="getFormGroupClass(registerForm.firstName)">
+        <label  class="control-label" for='firstName'>First Name:</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter your First Name..."  ng-model="user.firstName" required>
+        <span ng-show="registerForm.firstName.$dirty" ng-class="getGlyphIconClass(registerForm.firstName)"></span>
+        <br />
+        <label class="control-label" ng-show="isRequired(registerForm.firstName)">*Required</label>
+    </div>
+    
+    <div class="form-group"  ng-class="getFormGroupClass(registerForm.lastName)">
+        <label  class="control-label" for='lastName'>Last Name:</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter your Last Name..."  ng-model="user.lastName" required>
+        <span ng-show="registerForm.lastName.$dirty" ng-class="getGlyphIconClass(registerForm.lastName)"></span>
+        <br />
+        <label class="control-label" ng-show="isRequired(registerForm.lastName)">*Required</label>
+    </div>
+    
+    <div class="form-group"  ng-class="getFormGroupClass(registerForm.name)">
+        <label  class="control-label" for='name'>User Name:</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your User Name..."  ng-model="user.name" required>
+        <span ng-show="registerForm.name.$dirty" ng-class="getGlyphIconClass(registerForm.name)"></span>
+        <br />
+        <label class="control-label" ng-show="isRequired(registerForm.name)">*Required</label>
+    </div>
+    <p>
+
+       <div class="form-group" ng-class="getFormGroupClass(registerForm.passwordText)>
+          <label class="control-label" for='confirmPasswordText'>Password:</label>
+        <input class="form-control" type="password" name="passwordText" placeholder="Enter your password..." ng-pattern="passwordPattern" required ng-model="user.password" />
+        <label class="control-label" ng-show="isRequired(registerForm.passwordText)">*Required</label>
+        <label class="control-label" ng-show="registerForm.passwordText.$error.pattern">*Required 8-12 characters with a-z and 0-9</label>
+      </div>
+   
+       <p>   
+         
+<!--     <div class="form-group"  ng-class="getFormGroupClass(registerForm.confirmPasswordText)"> -->
+<!--         <label class="control-label" for='confirmPasswordText'>Confirm Password:</label> -->
+<!--         <input type="password" class="form-control" id="confirmPasswordText"  -->
+<!--         		name="confirmPasswordText" placeholder="Enter your password again..."  -->
+<!--         		ng-model="user.passwordconfirm" -->
+<!-- 				required -->
+<!-- 				ng-pattern="passwordPattern" -->
+<!-- 				password-confirm match-target="password"> -->
+				
+<!--         <span ng-show="registerForm.confirmPasswordText.$dirty" ng-class="getGlyphIconClass(registerForm.confirmPasswordText)"></span> -->
+<!--         <br /> -->
+<!--         <label class="control-label" ng-show="isRequired(registerForm.confirmPasswordText)">*Required</label> -->
+<!--         <label class="control-label" ng-show="registerForm.confirmPasswordText.$error.pattern">*Required 8-12 characters with a-z and 0-9</label> -->
+<!--         <label class="control-label" ng-show="registerForm.confirmPasswordText.$error.match">*Passwords don't match.</label> -->
+<!--     </div> -->
+    
+    <p>
+    <div   ng-class="getFormGroupClass(registerForm.emailText)">
+        <label class="control-label" for='emailText'>Email:</label>
+        <input type="email" class="form-control" id="emailText" name="emailText" placeholder="Enter your email..." ng-model="user.email" required/>
+        <span ng-show="registerForm.emailText.$dirty" ng-class="getGlyphIconClass(registerForm.emailText)"></span>
+        <br />
+        <label class="control-label left" ng-show="isRequired(registerForm.emailText)">*Required</label>
+        <label class="control-label left" ng-show="registerForm.emailText.$error.email">*Invalid email</label>
+    </div>
+    <p>
+    <button type="submit" class="btn btn-info" ng-disabled="registerForm.$invalid">Submit</button>
+</form>
+
